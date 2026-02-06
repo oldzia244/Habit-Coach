@@ -1,0 +1,1198 @@
+/* ===== RESET I PODSTAWOWE STYLE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #d4f1d4 0%, #a8e6cf 50%, #c8f7dc 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* ===== HEADER ===== */
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    padding: 20px;
+    animation: fadeIn 0.6s ease-in;
+    position: relative;
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    color: white;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    opacity: 0.9;
+    color: white;
+}
+
+/* Przełącznik trybu ciemnego */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    backdrop-filter: blur(10px);
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: rotate(20deg) scale(1.1);
+}
+
+.theme-icon {
+    transition: transform 0.3s;
+}
+
+/* Przycisk "Dobre nawyki" w headerze */
+.btn-good-habits-header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(76, 175, 80, 0.3);
+    border: 2px solid rgba(76, 175, 80, 0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    backdrop-filter: blur(10px);
+}
+
+.btn-good-habits-header:hover {
+    background: rgba(76, 175, 80, 0.5);
+    transform: scale(1.1);
+}
+
+/* Odtwarzacz muzyki (ukryty w tle) */
+#youtubePlayer {
+    display: none;
+}
+
+/* ===== SEKCJE ===== */
+section {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: slideUp 0.5s ease-out;
+}
+
+section h2 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ===== PRZYCISK DODAJ NAWYK ===== */
+.add-habit-btn-container {
+    text-align: center;
+}
+
+.btn-add-habit-main {
+    padding: 15px 30px;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+.btn-add-habit-main:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
+}
+
+/* ===== MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    animation: fadeIn 0.3s ease-in;
+}
+
+.modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: scaleIn 0.3s ease-out;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #667eea;
+}
+
+.close-modal {
+    font-size: 2em;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s;
+    background: none;
+    border: none;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+/* ===== FORMULARZ ===== */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1em;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4caf50;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Wybór koloru */
+.color-picker {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.color-option {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.3s;
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+}
+
+.color-option.selected {
+    border-color: #333;
+    transform: scale(1.15);
+}
+
+/* Wybór ikony */
+.icon-picker {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.icon-option {
+    padding: 15px;
+    font-size: 1.5em;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s;
+    background: #f8f9fa;
+}
+
+.icon-option:hover {
+    transform: scale(1.1);
+    background: #e9ecef;
+}
+
+.icon-option.selected {
+    border-color: #4caf50;
+    background: #e8f5e9;
+    transform: scale(1.15);
+}
+
+/* Przyciski formularza */
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.btn-primary,
+.btn-secondary {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: #4caf50;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #45a049;
+}
+
+.btn-secondary {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background: #d0d0d0;
+}
+
+/* ===== LISTA NAWYKÓW ===== */
+.habits-list {
+    display: grid;
+    gap: 20px;
+}
+
+.habit-card {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 5px solid #4caf50;
+    transition: all 0.3s;
+    animation: slideIn 0.4s ease-out;
+}
+
+.habit-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.habit-card.completed {
+    background: #e8f5e9;
+}
+
+.habit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.habit-info {
+    flex: 1;
+}
+
+.habit-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.habit-icon {
+    font-size: 1.5em;
+}
+
+.habit-name {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #333;
+}
+
+.habit-description {
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.habit-frequency {
+    display: inline-block;
+    background: #e0e0e0;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 5px;
+}
+
+.habit-stats-row {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.habit-streak {
+    background: #4caf50;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.habit-completion-rate {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* Akcje nawyku */
+.habit-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-check {
+    flex: 1;
+    padding: 12px;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-check:hover {
+    background: #45a049;
+    transform: scale(1.02);
+}
+
+.btn-check.checked {
+    background: #9e9e9e;
+}
+
+.btn-check.checking {
+    animation: checkPulse 0.6s ease-out;
+}
+
+.btn-edit,
+.btn-delete,
+.btn-chart {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1em;
+}
+
+.btn-edit {
+    background: #2196f3;
+    color: white;
+}
+
+.btn-edit:hover {
+    background: #1976d2;
+}
+
+.btn-chart {
+    background: #ff9800;
+    color: white;
+}
+
+.btn-chart:hover {
+    background: #f57c00;
+}
+
+.btn-delete {
+    background: #f44336;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #da190b;
+}
+
+/* ===== WYKRES ===== */
+.chart-container {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.chart-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 0.95em;
+}
+
+.chart-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: 120px;
+    border-bottom: 2px solid #e0e0e0;
+    gap: 5px;
+}
+
+.chart-bar-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.chart-bar {
+    width: 100%;
+    background: #667eea;
+    border-radius: 4px 4px 0 0;
+    transition: all 0.3s;
+    position: relative;
+    min-height: 4px;
+}
+
+.chart-bar.completed {
+    background: #4caf50;
+}
+
+.chart-bar.missed {
+    background: #e0e0e0;
+}
+
+.chart-bar:hover {
+    opacity: 0.8;
+    transform: scaleY(1.05);
+}
+
+.chart-label {
+    font-size: 0.7em;
+    color: #666;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* ===== WSKAZÓWKI ===== */
+.insights-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.insight-card {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 15px;
+    border-radius: 8px;
+    animation: slideIn 0.5s ease-out;
+}
+
+.insight-card.positive {
+    background: #d4edda;
+    border-left-color: #28a745;
+}
+
+.insight-card.warning {
+    background: #f8d7da;
+    border-left-color: #dc3545;
+}
+
+.insight-card.info {
+    background: #d1ecf1;
+    border-left-color: #17a2b8;
+}
+
+.insight-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.insight-text {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ===== KOMUNIKATY ===== */
+.no-habits,
+.no-insights,
+.no-activities {
+    text-align: center;
+    color: #999;
+    padding: 40px 20px;
+    font-style: italic;
+}
+
+/* ===== PLANOWANE AKTYWNOŚCI ===== */
+.add-activity-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#activityInput {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+#activityInput:focus {
+    outline: none;
+    border-color: #4caf50;
+}
+
+.btn-add-activity {
+    padding: 12px 25px;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-weight: bold;
+}
+
+.btn-add-activity:hover {
+    background: #45a049;
+}
+
+.activities-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #4caf50;
+    transition: all 0.3s;
+    animation: slideIn 0.4s ease-out;
+}
+
+.activity-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.activity-item.completed {
+    background: #e8f5e9;
+    border-left-color: #4caf50;
+    opacity: 0.7;
+}
+
+.activity-checkbox {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    accent-color: #4caf50;
+}
+
+.activity-text {
+    flex: 1;
+    color: #333;
+    font-size: 1em;
+}
+
+.activity-item.completed .activity-text {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.activity-time {
+    font-size: 0.85em;
+    color: #999;
+}
+
+.btn-delete-activity {
+    padding: 8px 12px;
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 0.9em;
+}
+
+.btn-delete-activity:hover {
+    background: #da190b;
+}
+
+/* ===== STATYSTYKI I WYKRESY ===== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stat-card.full-width {
+    grid-column: 1 / -1;
+}
+
+.stat-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Wykres słupkowy */
+.bar-chart-container {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.bar-chart-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bar-chart-label {
+    min-width: 120px;
+    font-size: 0.9em;
+    color: #666;
+    font-weight: 500;
+}
+
+.bar-chart-bar-wrapper {
+    flex: 1;
+    background: #e0e0e0;
+    border-radius: 8px;
+    height: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.bar-chart-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50, #66bb6a);
+    border-radius: 8px;
+    transition: width 0.6s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
+.bar-chart-value {
+    color: white;
+    font-weight: bold;
+    font-size: 0.85em;
+}
+
+/* Wykres kołowy */
+.pie-chart-container {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pie-chart-svg {
+    width: 200px;
+    height: 200px;
+}
+
+.pie-chart-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pie-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95em;
+}
+
+.pie-legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+}
+
+.pie-legend-text {
+    color: #666;
+}
+
+.pie-legend-value {
+    font-weight: bold;
+    color: #333;
+}
+
+.no-data-message {
+    text-align: center;
+    color: #999;
+    padding: 40px 20px;
+    font-style: italic;
+}
+
+/* ===== ANIMACJE ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes checkPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ===== RESPONSYWNOŚĆ ===== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+    
+    .color-picker,
+    .icon-picker {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .habit-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .habit-stats-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .habit-actions {
+        flex-wrap: wrap;
+    }
+    
+    .btn-check {
+        flex: 1 1 100%;
+    }
+    
+    .chart-label {
+        font-size: 0.7em;
+    }
+    
+    .add-activity-form {
+        flex-direction: column;
+    }
+    
+    .activity-item {
+        flex-wrap: wrap;
+    }
+    
+    .activity-time {
+        order: -1;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .bar-chart-label {
+        min-width: 80px;
+        font-size: 0.8em;
+    }
+    
+    .pie-chart-svg {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    section {
+        padding: 15px;
+    }
+    
+    .modal-content {
+        padding: 20px;
+    }
+    
+    .color-picker,
+    .icon-picker {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+        top: 10px;
+        right: 10px;
+    }
+    
+    .btn-good-habits-header {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+        top: 10px;
+        left: 10px;
+    }
+}
+
+/* ===== TRYB CIEMNY ===== */
+body.dark-mode {
+    background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #388e3c 100%);
+    color: #e0e0e0;
+}
+
+body.dark-mode header {
+    color: #e0e0e0;
+}
+
+body.dark-mode section {
+    background: #34495e;
+    color: #e0e0e0;
+}
+
+body.dark-mode section h2 {
+    color: #81c784;
+}
+
+body.dark-mode .habit-card {
+    background: #2c3e50;
+    color: #e0e0e0;
+}
+
+body.dark-mode .habit-card.completed {
+    background: #1e3a2e;
+}
+
+body.dark-mode .habit-name,
+body.dark-mode .habit-description,
+body.dark-mode .activity-text {
+    color: #e0e0e0;
+}
+
+body.dark-mode .habit-frequency,
+body.dark-mode .activity-time {
+    background: #2c3e50;
+    color: #b0b0b0;
+}
+
+body.dark-mode .chart-container {
+    background: rgba(44, 62, 80, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .chart-title {
+    color: #b0b0b0;
+}
+
+body.dark-mode .chart-bars {
+    border-bottom-color: #4a5f7f;
+}
+
+body.dark-mode .chart-label {
+    color: #b0b0b0;
+}
+
+body.dark-mode .chart-bar.missed {
+    background: #4a5f7f;
+}
+
+body.dark-mode .activity-item {
+    background: #2c3e50;
+    border-left-color: #81c784;
+}
+
+body.dark-mode .activity-item:hover {
+    background: #3d5a73;
+}
+
+body.dark-mode .activity-item.completed {
+    background: #1e3a2e;
+    border-left-color: #4caf50;
+}
+
+body.dark-mode .activity-item.completed .activity-text {
+    color: #888;
+}
+
+body.dark-mode .insight-card {
+    background: #3d5a73;
+    color: #e0e0e0;
+}
+
+body.dark-mode .insight-card.positive {
+    background: #1e3a2e;
+    border-left-color: #4caf50;
+}
+
+body.dark-mode .insight-card.warning {
+    background: #4a2c2c;
+    border-left-color: #e74c3c;
+}
+
+body.dark-mode .insight-card.info {
+    background: #2c3e4a;
+    border-left-color: #3498db;
+}
+
+body.dark-mode .insight-title,
+body.dark-mode .insight-text {
+    color: #e0e0e0;
+}
+
+body.dark-mode .modal-content {
+    background: #34495e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .modal-header h2 {
+    color: #74b9ff;
+}
+
+body.dark-mode .form-group label {
+    color: #e0e0e0;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background: #2c3e50;
+    color: #e0e0e0;
+    border-color: #4a5f7f;
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus,
+body.dark-mode select:focus {
+    border-color: #81c784;
+}
+
+body.dark-mode .icon-option {
+    background: #2c3e50;
+    border-color: #4a5f7f;
+}
+
+body.dark-mode .icon-option:hover {
+    background: #3d5a73;
+}
+
+body.dark-mode .icon-option.selected {
+    background: #1b5e20;
+    border-color: #81c784;
+}
+
+body.dark-mode .btn-secondary {
+    background: #4a5f7f;
+    color: #e0e0e0;
+}
+
+body.dark-mode .btn-secondary:hover {
+    background: #5a6f8f;
+}
+
+body.dark-mode .no-habits,
+body.dark-mode .no-insights,
+body.dark-mode .no-activities {
+    color: #888;
+}
+
+body.dark-mode .theme-toggle {
+    background: rgba(52, 73, 94, 0.5);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode .theme-toggle:hover {
+    background: rgba(52, 73, 94, 0.8);
+}
+
+body.dark-mode .btn-good-habits-header {
+    background: rgba(76, 175, 80, 0.5);
+    border-color: rgba(76, 175, 80, 0.7);
+}
+
+body.dark-mode .btn-good-habits-header:hover {
+    background: rgba(76, 175, 80, 0.8);
+}
+
+body.dark-mode .stat-card {
+    background: rgba(44, 62, 80, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .stat-title {
+    color: #b0b0b0;
+}
+
+body.dark-mode .bar-chart-label {
+    color: #b0b0b0;
+}
+
+body.dark-mode .bar-chart-bar-wrapper {
+    background: #4a5f7f;
+}
+
+body.dark-mode .pie-legend-text {
+    color: #b0b0b0;
+}
+
+body.dark-mode .pie-legend-value {
+    color: #e0e0e0;
+}
+
+body.dark-mode .trend-label,
+body.dark-mode .trend-value {
+    fill: #b0b0b0;
+}
+
+body.dark-mode .no-data-message {
+    color: #888;
+}
+
+
