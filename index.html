@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Habit Coach - Inteligentny trener nawyków z zaawansowaną analizą i personalizowanymi wskazówkami">
+    <title>Habit Coach - Twój inteligentny trener nawyków</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <button id="goodHabitsBtn" class="btn-good-habits-header" title="Zobacz film o dobrych nawykach">
+                🎬
+            </button>
+            <h1>🏃💧🥗 Habit Coach</h1>
+            <p class="subtitle">Twój inteligentny trener nawyków</p>
+            <button id="themeToggle" class="theme-toggle" title="Przełącz tryb ciemny/jasny">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </header>
+
+        <!-- SEKCJA DODAWANIA NAWYKU -->
+        <section class="add-habit-section">
+            <div class="add-habit-btn-container">
+                <button id="addHabitBtn" class="btn-add-habit-main">➕ Dodaj nowy nawyk</button>
+            </div>
+        </section>
+
+        <!-- SEKCJA Z LISTĄ NAWYKÓW -->
+        <section class="habits-section">
+            <h2>📋 Twoje nawyki</h2>
+            <div id="habitsList" class="habits-list">
+                <!-- Nawyki będą dodawane dynamicznie przez JavaScript -->
+            </div>
+            <p id="noHabitsMessage" class="no-habits">
+                Nie masz jeszcze żadnych nawyków.<br>
+                Kliknij przycisk powyżej, aby dodać pierwszy! 🚀
+            </p>
+        </section>
+
+        <!-- SEKCJA PLANOWANYCH AKTYWNOŚCI -->
+        <section class="activities-section">
+            <h2>📅 Planowane aktywności</h2>
+            <div class="add-activity-form">
+                <input type="text" id="activityInput" placeholder="Wpisz planowaną aktywność, np. 'Spotkanie o 15:00', 'Kupić warzywa'..." maxlength="150">
+                <button id="addActivityBtn" class="btn-add-activity">Dodaj</button>
+            </div>
+            <div id="activitiesList" class="activities-list">
+                <!-- Aktywności będą dodawane dynamicznie -->
+            </div>
+            <p id="noActivitiesMessage" class="no-activities">Nie masz jeszcze żadnych planowanych aktywności. Dodaj pierwszą powyżej! 📝</p>
+        </section>
+
+        <!-- SEKCJA STATYSTYK I WYKRESÓW -->
+        <section class="statistics-section">
+            <h2>📊 Statystyki i wykresy</h2>
+            
+            <div class="stats-grid">
+                <!-- Wykres słupkowy wykonanych dni -->
+                <div class="stat-card">
+                    <h3 class="stat-title">📊 Wykonane dni (ostatnie 30 dni)</h3>
+                    <div id="barChart" class="bar-chart-container">
+                        <!-- Wykres będzie generowany dynamicznie -->
+                    </div>
+                </div>
+
+                <!-- Wykres kołowy wykonane vs pominięte -->
+                <div class="stat-card">
+                    <h3 class="stat-title">🎯 Wykonane vs Pominięte</h3>
+                    <div id="pieChart" class="pie-chart-container">
+                        <!-- Wykres będzie generowany dynamicznie -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKCJA Z INTELIGENTNYMI WSKAZÓWKAMI -->
+        <section class="insights-section">
+            <h2>💡 Inteligentne wskazówki</h2>
+            <div id="insightsList" class="insights-list">
+                <p class="no-insights">Zbieramy dane... Wskazówki pojawią się po kilku dniach śledzenia nawyków. 📊</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- MODAL DODAWANIA/EDYCJI NAWYKU -->
+    <div id="habitModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Dodaj nowy nawyk</h2>
+                <button id="closeModal" class="close-modal">&times;</button>
+            </div>
+            
+            <form id="habitForm">
+                <!-- Nazwa nawyku -->
+                <div class="form-group">
+                    <label for="habitName">Nazwa nawyku *</label>
+                    <input 
+                        type="text" 
+                        id="habitName" 
+                        placeholder="np. pić 2 litry wody, czytać 10 minut..." 
+                        maxlength="100"
+                        required
+                    >
+                </div>
+
+                <!-- Opis (opcjonalny) -->
+                <div class="form-group">
+                    <label for="habitDescription">Opis (opcjonalnie)</label>
+                    <textarea 
+                        id="habitDescription" 
+                        placeholder="Dodaj szczegóły, motywację lub cel..."
+                        maxlength="200"
+                    ></textarea>
+                </div>
+
+                <!-- Częstotliwość -->
+                <div class="form-group">
+                    <label for="habitFrequency">Częstotliwość</label>
+                    <select id="habitFrequency">
+                        <option value="daily">Codziennie</option>
+                        <option value="weekdays">Dni robocze (Pn-Pt)</option>
+                        <option value="weekends">Weekendy (Sb-Nd)</option>
+                        <option value="weekly">Raz w tygodniu</option>
+                    </select>
+                </div>
+
+                <!-- Wybór koloru -->
+                <div class="form-group">
+                    <label>Kolor</label>
+                    <div id="colorPicker" class="color-picker">
+                        <!-- Kolory będą dodane przez JavaScript -->
+                    </div>
+                    <input type="hidden" id="selectedColor">
+                </div>
+
+                <!-- Wybór ikony -->
+                <div class="form-group">
+                    <label>Ikona</label>
+                    <div id="iconPicker" class="icon-picker">
+                        <!-- Ikony będą dodane przez JavaScript -->
+                    </div>
+                    <input type="hidden" id="selectedIcon">
+                </div>
+
+                <!-- Przyciski akcji -->
+                <div class="form-actions">
+                    <button type="button" id="cancelBtn" class="btn-secondary">Anuluj</button>
+                    <button type="submit" class="btn-primary">Zapisz nawyk</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>
